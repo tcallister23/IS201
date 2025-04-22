@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yankees Player Stats Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #1C2841;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #FFCC00;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 1px 1px 0 black;
+            font-size: 2.5em;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #1C2841;
+            border-radius: 10px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #1C2841;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #2e3b5a;
+        }
+
+        .result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yankees Player Stats Quiz</h1>
+    <div class="quiz-container">
+        <div class="question" id="question"></div>
+        <div class="answers" id="answers"></div>
+        <div class="result" id="result"></div>
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+
+    <script>
+        const players = [
+            {
+                name: "Aaron Judge",
+                stats: "Batting Average: .384, Home Runs: 7, Hits: 33"
+            },
+            {
+                name: "Paul Goldschmidt",
+                stats: "Batting Average: .372, Home Runs: 1, Hits: 32"
+            },
+            {
+                name: "Ben Rice",
+                stats: "Batting Average: .288, Home Runs: 5, Hits: 19"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let shuffledStats = shuffle([...players]);
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function loadQuestion() {
+            const question = document.getElementById('question');
+            const answers = document.getElementById('answers');
+            const result = document.getElementById('result');
+            result.textContent = "";
+
+            const player = players[currentQuestion];
+            question.textContent = `Which player has the following stats? ${player.stats}`;
+
+            answers.innerHTML = "";
+            shuffledStats.forEach(p => {
+                const btn = document.createElement('button');
+                btn.textContent = p.name;
+                btn.onclick = () => checkAnswer(p.name);
+                answers.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedName) {
+            const result = document.getElementById('result');
+            if (selectedName === players[currentQuestion].name) {
+                result.textContent = "Correct!";
+                result.style.color = "green";
+            } else {
+                result.textContent = `Wrong! The correct answer was ${players[currentQuestion].name}`;
+                result.style.color = "red";
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < players.length) {
+                loadQuestion();
+            } else {
+                document.querySelector('.quiz-container').innerHTML = "<h2>Quiz Complete!</h2><p>Thanks for playing!</p>";
+            }
+        }
+
+        // Start the quiz
+        loadQuestion();
+    </script>
+    <br>
+    <br>
+    <br>
+    
+    <a href="scratch.html">Go Back Home</a>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* Yankees-inspired colors */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #1C2841; /* Yankees Navy */
+    margin: 0;
+    padding: 0;
+}
+
+.common.header {
+    background-color: #1C2841; /* Yankees Navy */
+    color: #FFFFFF; /* Bright white */
+    padding: 20px;
+    text-align: center;
+}
+
+.common.header h1 {
+    color: #ffffff; /* Bright yellow for visibility */
+    font-size: 2.5em;
+    
+}
+
+
+ol > li {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+nav {
+    background-color: #A2AAAD; /* Gray accent */
+    padding: 10px;
+    text-align: left;
+}
+
+nav a {
+    color: #1C2841;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.common.mainbody {
+    padding: 20px;
+    background-color: white;
+    margin: 10px auto;
+    max-width: 800px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 2px solid #1C2841;
+}
+
+.video {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h3, h4 {
+    color: #1C2841;
+}
+
+a[href="#top"] {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #1C2841;
+    font-weight: bold;
+}
